@@ -5,7 +5,7 @@
 
 # Spark Plug Module for Craft CMS
 
-This module provides the core functionality for the [Spark plugin](https://github.com/putyourlightson/craft-spark), a real-time, template-driven hypermedia framework for [Craft CMS](https://craftcms.com/). If you are developing a Craft plugin/module and would like to use Spark in the control panel, then you can require this package to give you its functionality, without requiring that the site has the Spark plugin installed.
+This module provides the core functionality for the [Spark plugin](https://github.com/putyourlightson/craft-spark), a real-time, template-driven hypermedia framework for [Craft CMS](https://craftcms.com/). If you are developing a Craft plugin/module and would like to use Spark in the control panel, you can require this package to give you its functionality, without requiring that the Spark plugin is installed.
 
 First require the package in your plugin/module's `composer.json` file.
 
@@ -42,7 +42,7 @@ Then use the Spark function and tags as normal in your control panel templates.
 
 Spark plugin issues should be reported to https://github.com/putyourlightson/craft-spark/issues
 
-Spark plugin changes are documented in https://github.com/putyourlightson/craft-spark/blob/develop/CHANGELOG.md
+The Spark plugin changelog is at https://github.com/putyourlightson/craft-spark/blob/develop/CHANGELOG.md
 
 ## Documentation
 
