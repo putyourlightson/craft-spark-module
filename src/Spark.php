@@ -11,12 +11,14 @@ use nystudio107\autocomplete\generators\AutocompleteTwigExtensionGenerator;
 use putyourlightson\spark\assets\DatastarAssetBundle;
 use putyourlightson\spark\models\SettingsModel;
 use putyourlightson\spark\models\StoreModel;
+use putyourlightson\spark\services\EventsService;
 use putyourlightson\spark\services\ResponseService;
 use putyourlightson\spark\twigextensions\SparkTwigExtension;
 use yii\base\Event;
 use yii\base\Module;
 
 /**
+ * @property-read EventsService $events
  * @property-read ResponseService $response
  * @property-read SettingsModel $settings
  */
@@ -80,6 +82,7 @@ class Spark extends Module
     private function registerComponents(): void
     {
         $this->setComponents([
+            'events' => EventsService::class,
             'response' => ResponseService::class,
         ]);
     }

@@ -24,7 +24,7 @@ class SparkGlobal
      */
     public function remove(string $selector): void
     {
-        Spark::$plug->response->remove($selector);
+        Spark::$plug->events->remove($selector);
     }
 
     /**
@@ -32,7 +32,7 @@ class SparkGlobal
      */
     public function redirect(string $uri): void
     {
-        Spark::$plug->response->redirect($uri);
+        Spark::$plug->events->redirect($uri);
     }
 
     /**

@@ -56,7 +56,7 @@ class StoreModel
     {
         $this->values[$name] = $value;
 
-        Spark::$plug->response->store([$name => $value]);
+        Spark::$plug->events->store([$name => $value]);
 
         return $this;
     }
@@ -70,7 +70,7 @@ class StoreModel
             $this->values[$name] = $value;
         }
 
-        Spark::$plug->response->store($values);
+        Spark::$plug->events->store($values);
 
         return $this;
     }
