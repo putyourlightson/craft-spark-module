@@ -5,7 +5,7 @@
 
 # Spark Plug Module for Craft CMS
 
-This module provides the core functionality for the [Spark plugin](https://github.com/putyourlightson/craft-spark), real-time, template-driven hypermedia framework for [Craft CMS](https://craftcms.com/). If you are developing a Craft plugin/module and would like to use Spark in the control panel, then you can require this package to give you its functionality, without requiring that the site has the Spark plugin installed.
+This module provides the core functionality for the [Spark plugin](https://github.com/putyourlightson/craft-spark), a real-time, template-driven hypermedia framework for [Craft CMS](https://craftcms.com/). If you are developing a Craft plugin/module and would like to use Spark in the control panel, then you can require this package to give you its functionality, without requiring that the site has the Spark plugin installed.
 
 First require the package in your plugin/module's `composer.json` file.
 
@@ -38,20 +38,6 @@ Then use the Spark function and tags as normal in your control panel templates.
 
 ```twig
 <button data-on-click="{{ spark('_spark/search') }}">Search</button>
-```
-
-If your plugin/module registers an asset bundle that depends on Datastar being loaded, ensure that you specify the `DatastarAssetBundle` class as a dependency.
-
-```php
-use craft\web\AssetBundle;
-use putyourlightson\spark\assets\DatastarAssetBundle;
-
-class MyAssetBundle extends AssetBundle
-{
-    public $depends = [
-        DatastarAssetBundle::class,
-    ];
-}
 ```
 
 Spark plugin issues should be reported to https://github.com/putyourlightson/craft-spark/issues
