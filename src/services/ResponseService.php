@@ -74,23 +74,6 @@ class ResponseService extends Component
         return $response;
     }
 
-    /**
-     * Throws an exception with the appropriate formats for easier debugging.
-     *
-     * @phpstan-return never
-     */
-    public function throwException(Throwable|string $exception): void
-    {
-        Craft::$app->getRequest()->getHeaders()->set('Accept', 'text/html');
-        Craft::$app->getResponse()->format = Response::FORMAT_HTML;
-
-        if ($exception instanceof Throwable) {
-            throw $exception;
-        }
-
-        throw new BadRequestHttpException($exception);
-    }
-
     private function getConfigForResponse(string $config): ConfigModel
     {
         $data = Craft::$app->getSecurity()->validateData($config);
@@ -112,5 +95,20 @@ class ResponseService extends Component
         } catch (Throwable $exception) {
             $this->throwException($exception);
         }
+    }
+
+    /**
+     * Throws an exception with the appropriate formats for easier debugging.
+     */
+    private function throwException(Throwable|string $exception): void
+    {
+        Craft::$app->getRequest()->getHeaders()->set('Accept', 'text/html');
+        Craft::$app->getResponse()->format = Response::FORMAT_HTML;
+
+        if ($exception instanceof Throwable) {
+            throw $exception;
+        }
+
+        throw new BadRequestHttpException($exception);
     }
 }

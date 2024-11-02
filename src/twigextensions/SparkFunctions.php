@@ -45,7 +45,7 @@ class SparkFunctions
             throw new SyntaxError(implode(' ', $config->getFirstErrors()));
         }
 
-        return UrlHelper::actionUrl('spark-module/response', [
+        return UrlHelper::actionUrl('spark-module', [
             'config' => $config->getHashed(),
         ]);
     }

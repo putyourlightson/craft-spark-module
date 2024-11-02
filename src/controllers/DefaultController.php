@@ -12,7 +12,7 @@ use putyourlightson\spark\Spark;
 use yii\web\ForbiddenHttpException;
 use yii\web\Response;
 
-class ResponseController extends Controller
+class DefaultController extends Controller
 {
     /**
      * @inheritdoc
