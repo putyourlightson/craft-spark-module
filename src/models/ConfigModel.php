@@ -36,7 +36,7 @@ class ConfigModel extends Model
      */
     public function validateVariables(mixed $attribute): bool
     {
-        $storeVariableName = Spark::$plug->settings->storeVariableName;
+        $storeVariableName = Spark::getInstance()->settings->storeVariableName;
 
         foreach ($this->variables as $key => $value) {
             if ($key === $storeVariableName) {

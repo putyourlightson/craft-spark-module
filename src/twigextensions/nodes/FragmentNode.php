@@ -33,6 +33,6 @@ class FragmentNode extends Node
 
         $compiler
             ->raw(";\n")
-            ->write(Spark::class . "::\$plugin->response->fragment(\$content, \$options);\n");
+            ->write(Spark::class . "::getInstance()->response->fragment(\$content, \$options);\n");
     }
 }

@@ -58,7 +58,7 @@ class ResponseController extends Controller
 
         // Stream the response.
         $this->response->stream = function() use ($config, $store) {
-            return Spark::$plug->response->stream($config, $store);
+            return Spark::getInstance()->response->stream($config, $store);
         };
 
         return $this->response;

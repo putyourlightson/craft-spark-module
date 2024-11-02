@@ -28,7 +28,7 @@ class EventsService extends Component
     {
         // Merge and remove empty values
         $options = array_filter(array_merge(
-            Spark::$plug->settings->defaultFragmentOptions,
+            Spark::getInstance()->settings->defaultFragmentOptions,
             $options
         ));
 

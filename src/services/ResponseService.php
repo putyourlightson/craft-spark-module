@@ -34,7 +34,7 @@ class ResponseService extends Component
 
         $store = new StoreModel($store);
         $variables = array_merge(
-            [Spark::$plug->settings->storeVariableName => $store],
+            [Spark::getInstance()->settings->storeVariableName => $store],
             $config->variables,
         );
 
@@ -42,7 +42,7 @@ class ResponseService extends Component
 
         // Output any rendered content in a fragment event.
         if (!empty($content)) {
-            Spark::$plug->events->fragment($content);
+            Spark::getInstance()->events->fragment($content);
         }
 
         return [];

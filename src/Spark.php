@@ -26,8 +26,7 @@ class Spark extends Module
 {
     public const DATASTAR_VERSION = '0.19.9';
 
-    public const ID = 'spark-plug';
-    public static Spark $plug;
+    public const ID = 'spark-module';
     private ?SettingsModel $_settings = null;
 
     /**
@@ -62,7 +61,6 @@ class Spark extends Module
     public function init(): void
     {
         parent::init();
-        self::$plug = $this;
 
         $this->registerComponents();
         $this->registerTwigExtension();

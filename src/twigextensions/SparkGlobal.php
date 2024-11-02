@@ -16,7 +16,7 @@ class SparkGlobal
      */
     public function runAction(string $route, array $params = []): Response
     {
-        return Spark::$plug->response->runAction($route, $params);
+        return Spark::getInstance()->response->runAction($route, $params);
     }
 
     /**
@@ -24,7 +24,7 @@ class SparkGlobal
      */
     public function remove(string $selector): void
     {
-        Spark::$plug->events->remove($selector);
+        Spark::getInstance()->events->remove($selector);
     }
 
     /**
@@ -32,7 +32,7 @@ class SparkGlobal
      */
     public function redirect(string $uri): void
     {
-        Spark::$plug->events->redirect($uri);
+        Spark::getInstance()->events->redirect($uri);
     }
 
     /**

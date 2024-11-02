@@ -1,7 +1,7 @@
 {
-  "name": "putyourlightson/craft-spark-plug",
+  "name": "putyourlightson/craft-spark-module",
   "description": "A real-time, template-driven hypermedia framework for Craft.",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "type": "craft-module",
   "license": "mit",
   "require": {
@@ -34,8 +34,8 @@
     "sort-packages": true
   },
   "support": {
-    "docs": "https://github.com/putyourlightson/craft-spark-plug",
-    "source": "https://github.com/putyourlightson/craft-spark-plug",
-    "issues": "https://github.com/putyourlightson/craft-spark-plug/issues"
+    "docs": "https://github.com/putyourlightson/craft-spark-module",
+    "source": "https://github.com/putyourlightson/craft-spark-module",
+    "issues": "https://github.com/putyourlightson/craft-spark-module/issues"
   }
 }

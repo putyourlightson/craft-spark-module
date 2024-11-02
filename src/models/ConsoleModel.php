@@ -46,6 +46,6 @@ class ConsoleModel
 
     private function console(string $message, string $mode): void
     {
-        Spark::$plug->events->console($message, $mode);
+        Spark::getInstance()->events->console($message, $mode);
     }
 }
