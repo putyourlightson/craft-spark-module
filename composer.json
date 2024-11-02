@@ -2,7 +2,7 @@
   "name": "putyourlightson/craft-spark-module",
   "description": "A real-time, template-driven hypermedia framework for Craft.",
   "version": "1.0.0-alpha.2",
-  "type": "craft-module",
+  "type": "yii-module",
   "license": "mit",
   "require": {
     "php": ">=8.2",
