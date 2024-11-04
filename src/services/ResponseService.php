@@ -99,6 +99,8 @@ class ResponseService extends Component
 
     /**
      * Throws an exception with the appropriate formats for easier debugging.
+     *
+     * @phpstan-return never
      */
     private function throwException(Throwable|string $exception): void
     {
