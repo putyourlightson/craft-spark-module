@@ -4,6 +4,7 @@
  * Tests the Spark functions.
  */
 
+use putyourlightson\spark\Spark;
 use putyourlightson\spark\twigextensions\SparkFunctions;
 use Twig\Error\SyntaxError;
 
@@ -27,6 +28,10 @@ test('Test creating an action', function(string $method) {
     'patch',
     'delete',
 ]);
+
+test('Test that creating an action containing a reserved variable name throws an exception', function() {
+    SparkFunctions::spark('template', [Spark::getInstance()->settings->storeVariableName => 1]);
+})->throws(SyntaxError::class);
 
 test('Test that creating an action containing an object variable throws an exception', function() {
     SparkFunctions::spark('template', ['object' => new stdClass()]);

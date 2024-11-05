@@ -1,12 +1,10 @@
-# Test Specification
 
-This document outlines the test specification for the Spark Module.
 
 ---
 
 ## Architecture Tests
 
-### [Architecture](pest/Architecture/ArchitectureTest.php)
+### [Architecture](tests/Architecture/ArchitectureTest.php)
 
 _Tests the architecture of the plugin._
 
@@ -15,17 +13,18 @@ _Tests the architecture of the plugin._
 
 ## Feature Tests
 
-### [Functions](pest/Feature/FunctionsTest.php)
+### [Functions](tests/Feature/FunctionsTest.php)
 
 _Tests the Spark functions._
 
+![Pass](https://raw.githubusercontent.com/putyourlightson/craft-generate-test-spec/main/icons/pass.svg) Test that creating an action containing a reserved variable name throws an exception.  
 ![Pass](https://raw.githubusercontent.com/putyourlightson/craft-generate-test-spec/main/icons/pass.svg) Test that creating an action containing an object variable throws an exception.  
 ![Pass](https://raw.githubusercontent.com/putyourlightson/craft-generate-test-spec/main/icons/pass.svg) Test creating a store.  
 ![Pass](https://raw.githubusercontent.com/putyourlightson/craft-generate-test-spec/main/icons/pass.svg) Test creating a nested store.  
 ![Pass](https://raw.githubusercontent.com/putyourlightson/craft-generate-test-spec/main/icons/pass.svg) Test that creating a store containing an object throws an exception.  
 ![Pass](https://raw.githubusercontent.com/putyourlightson/craft-generate-test-spec/main/icons/pass.svg) Test that creating a nested store containing an object throws an exception.  
 
-### [Store](pest/Feature/StoreTest.php)
+### [Store](tests/Feature/StoreTest.php)
 
 _Tests the store._
 

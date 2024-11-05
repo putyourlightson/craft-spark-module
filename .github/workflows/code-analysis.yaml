@@ -18,7 +18,7 @@ jobs:
             run: composer phpstan
           - name: 'Coding Standards'
             run: composer check-cs
-          - name: 'Pest tests'
+          - name: 'Pest Tests'
             run: composer test
     name: ${{ matrix.actions.name }}
     runs-on: ubuntu-latest

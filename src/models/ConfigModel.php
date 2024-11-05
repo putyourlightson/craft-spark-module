@@ -40,13 +40,13 @@ class ConfigModel extends Model
 
         foreach ($this->variables as $key => $value) {
             if ($key === $storeVariableName) {
-                $this->addError($attribute, Craft::t('spark', 'Variable `' . $storeVariableName . '` is reserved. Use a different name or modify the name of the store variable using the `storeVariableName` config setting.'));
+                $this->addError($attribute, 'Variable `' . $storeVariableName . '` is reserved. Use a different name or modify the name of the store variable using the `storeVariableName` config setting.');
 
                 return false;
             }
 
             if (is_object($value) || (is_array($value) && !$this->validateVariables($value))) {
-                $this->addError($attribute, Craft::t('spark', 'Variable `' . $key . '` is an object, which is a forbidden variable type in the context of a Spark request.'));
+                $this->addError($attribute, 'Variable `' . $key . '` is an object, which is a forbidden variable type in the context of a Spark request.');
 
                 return false;
             }
