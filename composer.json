@@ -5,7 +5,7 @@
   "type": "yii-module",
   "license": "mit",
   "require": {
-    "php": ">=8.2",
+    "php": "^8.2",
     "craftcms/cms": "^5.0",
     "putyourlightson/datastar-php": "1.0.2"
   },

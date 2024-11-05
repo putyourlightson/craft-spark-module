@@ -50,13 +50,29 @@ class StoreModel
     }
 
     /**
-     * Sets a value in the store.
+     * Sets a value in the store, converting the name to a nested array using dot notation.
      */
     public function set(string $name, mixed $value): static
     {
-        $this->values[$name] = $value;
+        $parts = explode('.', $name);
+        $currentValue = &$this->values;
+        $store = [];
+        $currentStore = &$store;
 
-        Spark::getInstance()->events->store([$name => $value]);
+        foreach ($parts as $part) {
+            if (!isset($currentValue[$part])) {
+                $currentValue[$part] = [];
+            }
+            $currentValue = &$currentValue[$part];
+
+            $currentStore[$part] = [];
+            $currentStore = &$currentStore[$part];
+        }
+
+        $currentValue = $value;
+        $currentStore = $value;
+
+        Spark::getInstance()->events->store($store);
 
         return $this;
     }
