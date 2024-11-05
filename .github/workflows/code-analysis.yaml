@@ -22,6 +22,16 @@ jobs:
             run: vendor/bin/pest
     name: ${{ matrix.actions.name }}
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v4
       - name: Cache Composer dependencies
@@ -39,4 +49,13 @@ jobs:
           tools: composer:v2
       - name: Install Composer dependencies
         run: composer install --no-interaction --no-ansi --no-progress
+      - name: Add Docker database host aliases to build environment
+        run: sudo echo "127.0.0.1 mysql" | sudo tee -a /etc/hosts
+      - name: Prepare Craft environment
+        run: |
+          cp .github/craft/.env.mysql .env
+          cp .github/craft/craft craft
+          cp .github/craft/bootstrap.php bootstrap.php
+      - name: Install Craft
+        run: php craft install/craft --username=admin --password=password --email=support@putyourlightson.com --site-name=Test --site-url=http://test.local --language=en --interactive=0
       - run: ${{ matrix.actions.run }}
