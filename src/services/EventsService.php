@@ -84,7 +84,10 @@ class EventsService extends Component
         throw new BadRequestHttpException($exception);
     }
 
-    private function sendEvent(string $class, string $content = '', array $options = []): void
+    /**
+     * Sends an event to the browser. This method is public so it can be mocked in tests.
+     */
+    public function sendEvent(string $class, string $content = '', array $options = []): void
     {
         /** @var EventInterface $event */
         $event = new $class();

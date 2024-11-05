@@ -38,7 +38,7 @@ class StoreModel
      */
     public function get(string $name): mixed
     {
-        return $this->values[$name] ?? null;
+        return $this->getNestedValue($name);
     }
 
     /**
@@ -56,7 +56,7 @@ class StoreModel
     {
         $this->setNestedValue($name, $value);
 
-        Spark::getInstance()->events->store($this->getNestedValue($name, $value));
+        Spark::getInstance()->events->store($this->getNestedArrayValue($name, $value));
 
         return $this;
     }
@@ -76,7 +76,36 @@ class StoreModel
     }
 
     /**
-     * Sets a nested value in the store using dot notation in the name.
+     * Removes a value from the store.
+     */
+    public function remove(string $name): static
+    {
+        $this->removeNestedValue($name);
+
+        Spark::getInstance()->events->store($this->getNestedArrayValue($name, null));
+
+        return $this;
+    }
+
+    /**
+     * Returns a nested value, or null if it does not exist.
+     */
+    private function getNestedValue(string $name): mixed
+    {
+        $parts = explode('.', $name);
+        $current = &$this->values;
+        foreach ($parts as $part) {
+            if (!isset($current[$part])) {
+                return null;
+            }
+            $current = &$current[$part];
+        }
+
+        return $current;
+    }
+
+    /**
+     * Sets a nested value in the store while supporting dot notation in the name.
      */
     private function setNestedValue(string $name, mixed $value): void
     {
@@ -92,9 +121,28 @@ class StoreModel
     }
 
     /**
-     * Returns a nested value using dot notation in the name.
+     * Removes a nested value from the store while supporting dot notation in the name.
      */
-    private function getNestedValue(string $name, mixed $value): array
+    private function removeNestedValue(string $name): void
+    {
+        $parts = explode('.', $name);
+        $part = reset($parts);
+        $current = &$this->values;
+        $parent = &$current;
+        foreach ($parts as $part) {
+            if (!isset($current[$part])) {
+                return;
+            }
+            $parent = &$current;
+            $current = &$current[$part];
+        }
+        unset($parent[$part]);
+    }
+
+    /**
+     * Returns a nested value while supporting dot notation in the name.
+     */
+    private function getNestedArrayValue(string $name, mixed $value): array
     {
         $parts = explode('.', $name);
         $nestedValue = [];
