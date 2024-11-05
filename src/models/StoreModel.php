@@ -50,29 +50,13 @@ class StoreModel
     }
 
     /**
-     * Sets a value in the store, converting the name to a nested array using dot notation.
+     * Sets a value in the store.
      */
     public function set(string $name, mixed $value): static
     {
-        $parts = explode('.', $name);
-        $currentValue = &$this->values;
-        $store = [];
-        $currentStore = &$store;
+        $this->setNestedValue($name, $value);
 
-        foreach ($parts as $part) {
-            if (!isset($currentValue[$part])) {
-                $currentValue[$part] = [];
-            }
-            $currentValue = &$currentValue[$part];
-
-            $currentStore[$part] = [];
-            $currentStore = &$currentStore[$part];
-        }
-
-        $currentValue = $value;
-        $currentStore = $value;
-
-        Spark::getInstance()->events->store($store);
+        Spark::getInstance()->events->store($this->getNestedValue($name, $value));
 
         return $this;
     }
@@ -89,5 +73,38 @@ class StoreModel
         Spark::getInstance()->events->store($values);
 
         return $this;
+    }
+
+    /**
+     * Sets a nested value in the store using dot notation in the name.
+     */
+    private function setNestedValue(string $name, mixed $value): void
+    {
+        $parts = explode('.', $name);
+        $current = &$this->values;
+        foreach ($parts as $part) {
+            if (!isset($current[$part])) {
+                $current[$part] = [];
+            }
+            $current = &$current[$part];
+        }
+        $current = $value;
+    }
+
+    /**
+     * Returns a nested value using dot notation in the name.
+     */
+    private function getNestedValue(string $name, mixed $value): array
+    {
+        $parts = explode('.', $name);
+        $nestedValue = [];
+        $current = &$nestedValue;
+        foreach ($parts as $part) {
+            $current[$part] = [];
+            $current = &$current[$part];
+        }
+        $current = $value;
+
+        return $nestedValue;
     }
 }
