@@ -8,7 +8,6 @@ namespace putyourlightson\spark\services;
 use Craft;
 use craft\base\Component;
 use craft\helpers\Json;
-use craft\web\View;
 use putyourlightson\spark\models\ConfigModel;
 use putyourlightson\spark\models\StoreModel;
 use putyourlightson\spark\Spark;
@@ -86,12 +85,12 @@ class ResponseService extends Component
 
     private function renderTemplate(string $template, array $variables): string
     {
-        if (!Craft::$app->getView()->doesTemplateExist($template, View::TEMPLATE_MODE_SITE)) {
+        if (!Craft::$app->getView()->doesTemplateExist($template)) {
             $this->throwException('Template `' . $template . '` does not exist.');
         }
 
         try {
-            return Craft::$app->getView()->renderTemplate($template, $variables, View::TEMPLATE_MODE_SITE);
+            return Craft::$app->getView()->renderTemplate($template, $variables);
         } catch (Throwable $exception) {
             $this->throwException($exception);
         }
