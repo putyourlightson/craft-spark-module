@@ -27,11 +27,11 @@ composer require markhuot/craft-pest-core:^2.0.0 --dev
 Then run the following command from the root of your project.
 
 ```shell
-php php vendor/bin/pest --configuration=vendor/putyourlightson/craft-spark-module/tests/pest/phpunit.xml --test-directory=vendor/putyourlightson/craft-spark-module/tests/pest
+php php vendor/bin/pest --configuration=vendor/putyourlightson/craft-spark-module/phpunit.xml --test-directory=vendor/putyourlightson/craft-spark-module/tests
 ```
 
 Or to run a specific test.
 
 ```shell
-php php vendor/bin/pest --configuration=vendor/putyourlightson/craft-spark-module/tests/pest/phpunit.xml --test-directory=vendor/putyourlightson/craft-spark-module/tests/pest --filter=ResponseTest
+php php vendor/bin/pest --configuration=vendor/putyourlightson/craft-spark-module/phpunit.xml --test-directory=vendor/putyourlightson/craft-spark-module/tests --filter=StoreTest
 ```
