@@ -4,7 +4,6 @@
  * Tests the Spark functions.
  */
 
-use craft\elements\Entry;
 use putyourlightson\spark\twigextensions\SparkFunctions;
 use Twig\Error\SyntaxError;
 
@@ -30,7 +29,7 @@ test('Test creating an action', function(string $method) {
 ]);
 
 test('Test that creating an action containing an object variable throws an exception', function() {
-    SparkFunctions::spark('template', ['entry' => new Entry()]);
+    SparkFunctions::spark('template', ['object' => new stdClass()]);
 })->throws(SyntaxError::class);
 
 test('Test creating a store', function() {
@@ -46,9 +45,9 @@ test('Test creating a nested store', function() {
 });
 
 test('Test that creating a store containing an object throws an exception', function() {
-    SparkFunctions::sparkStore(['a' => 1, 'b' => new Entry()]);
+    SparkFunctions::sparkStore(['a' => 1, 'b' => new stdClass()]);
 })->throws(SyntaxError::class);
 
 test('Test that creating a nested store containing an object throws an exception', function() {
-    SparkFunctions::sparkStore(['a' => 1, 'b' => ['c' => 2, 'd' => new Entry()]]);
+    SparkFunctions::sparkStore(['a' => 1, 'b' => ['c' => 2, 'd' => new stdClass()]]);
 })->throws(SyntaxError::class);
